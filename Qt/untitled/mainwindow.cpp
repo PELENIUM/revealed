@@ -21,6 +21,6 @@ void MainWindow::on_pushButton_clicked()
 {
     QString str1 = ui -> lineEdit -> text();
     QString str2 = ui -> lineEdit_2 -> text();
-    std::string str = "python D:\\ILYA\\coding\\C++\\Qt\\untitled\\main.py " + str1.toStdString() + " " + str2.toStdString();
+    std::string str = "python <путь> " + str1.toStdString() + " " + str2.toStdString();
     std::system(str.c_str());
 }

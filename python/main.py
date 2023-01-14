@@ -9,4 +9,4 @@ types = []
 fig = plt.figure(figsize =(10, 7))
 plt.pie(price, labels = types)
 
-plt.savefig("D:\\ILYA\\coding\\C++\\Qt\\untitled\\file.png")
+plt.savefig("file.img")
