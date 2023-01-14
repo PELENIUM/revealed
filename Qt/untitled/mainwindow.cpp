@@ -2,12 +2,14 @@
 #include "ui_mainwindow.h"
 #include <QMessageBox>
 #include <string>
+#include <iostream>
+#include <filesystem>
 #include <cstdlib>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
-{
+    {
     ui->setupUi(this);
 }
 
@@ -16,11 +18,11 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
 void MainWindow::on_pushButton_clicked()
 {
+    std::filesystem::path path = "main.py";
     QString str1 = ui -> lineEdit -> text();
     QString str2 = ui -> lineEdit_2 -> text();
-    std::string str = "python <путь> " + str1.toStdString() + " " + str2.toStdString();
-    std::system(str.c_str());
+    std::string command = "python " + path.u8string() + " " + str1.toStdString() + " " + str2.toStdString();
+    std::system(command.c_str());
 }
