@@ -1,10 +1,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QMessageBox>
+#include <fstream>
 #include <string>
-#include <iostream>
-#include <filesystem>
-#include <cstdlib>
+#include <cctype>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), 
@@ -17,9 +16,31 @@ delete ui;
 }
 
 void MainWindow::on_pushButton_clicked() {
-std::filesystem::path path = "python/main.py";
-QString str1 = ui -> lineEdit_1 -> text();
-QString str2 = ui -> lineEdit_2 -> text();
-std::string command = "python " + path.u8string() + " " + str1.toStdString() + " " + str2.toStdString();
-std::system(command.c_str());
+    setlocale(LC_ALL, "ru");
+    QString name = ui -> lineEdit -> text();
+    QString price = ui -> lineEdit_2 -> text();
+
+    bool flag = true;
+
+    for (int i = 0; i < price.size(); i++){
+        if (isdigit(price.toStdString()[i]))
+            continue;
+        else{
+            flag = false;
+            break;
+        }
+    }
+
+    if (flag == false){
+        QMessageBox::warning(this, "Ошибка", "Неверный формат введенных данных");
+        ui -> lineEdit -> clear();
+        ui -> lineEdit_2 ->clear();
+    }
+    else{
+        std::ofstream file("D:\\ILYA\\coding\\C++\\source\\revealed\\Qt\\untitled\\file.txt", std::ios::binary|std::ios::app);
+        file << name.toStdString() << " " << price.toStdString() << std::endl;
+        file.close();
+        ui -> lineEdit -> clear();
+        ui -> lineEdit_2 ->clear();
+    }
 }
