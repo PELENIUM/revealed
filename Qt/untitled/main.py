@@ -1,6 +1,6 @@
 from matplotlib import pyplot as plt
 
-file = open('D:\\ILYA\\coding\\C++\\source\\revealed\\Qt\\untitled\\file.txt','r', encoding="utf-8")
+file = open('file.txt','r', encoding="utf-8")
 
 s = ""
 

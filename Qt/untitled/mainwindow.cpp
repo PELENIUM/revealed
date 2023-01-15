@@ -37,7 +37,7 @@ void MainWindow::on_pushButton_clicked() {
         ui -> lineEdit_2 ->clear();
     }
     else{
-        std::ofstream file("D:\\ILYA\\coding\\C++\\source\\revealed\\Qt\\untitled\\file.txt", std::ios::binary|std::ios::app);
+        std::ofstream file("file.txt", std::ios::binary|std::ios::app);
         file << name.toStdString() << " " << price.toStdString() << std::endl;
         file.close();
         ui -> lineEdit -> clear();
