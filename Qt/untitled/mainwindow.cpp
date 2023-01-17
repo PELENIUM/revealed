@@ -16,14 +16,12 @@ delete ui;
 }
 
 void MainWindow::on_pushButton_clicked() {
-    setlocale(LC_ALL, "ru");
     QString name = ui -> lineEdit -> text();
     QString price = ui -> lineEdit_2 -> text();
-
     bool flag = true;
 
     for (int i = 0; i < price.size(); i++){
-        if (isdigit(price.toStdString()[i]))
+        if (isdigit(price.toStdString()[i]) or price.toStdString()[i] == '.' or price.toStdString()[i] == ',')
             continue;
         else{
             flag = false;
